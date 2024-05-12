@@ -4,5 +4,5 @@ export const dark: ThemeType = {
     bg: "#202020",
     secondBg: "#2f2f2f",
     text: "#fff",
-    boxColor: "rgb(70, 107, 255)",
+    boxColor: "rgb(40, 107, 255)",
 }

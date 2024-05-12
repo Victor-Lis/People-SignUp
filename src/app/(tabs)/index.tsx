@@ -16,7 +16,7 @@ export default function app() {
     <View style={[styles.container, { backgroundColor: theme.bg }]}>
       <FlatList
         style={{
-          // marginVertical: "2.5%",
+          marginVertical: "2.5%",
         }}
         data={people}
         renderItem={({ item }) => <Card {...item} />}

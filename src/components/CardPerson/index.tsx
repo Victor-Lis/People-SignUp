@@ -55,7 +55,7 @@ export default function CardPerson({ name, CPF, birthDay, id }: PersonType) {
 
 const styles = StyleSheet.create({
   cardContainer: {
-    marginVertical: "2.5%",
+    marginVertical: "1%",
     marginHorizontal: "auto",
     width: "90%",
     paddingVertical: "2.5%",

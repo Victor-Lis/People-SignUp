@@ -16,8 +16,8 @@ export default function Layout() {
   return (
     <>
       <ExpoStatusBar
-        backgroundColor={theme.bg}
-        style={useColorScheme() === "light" ? "dark" : "light"}
+        backgroundColor={theme?.bg}
+        style={"auto"}
       />
       <PeopleProvider>
         <ThemeProvider>
