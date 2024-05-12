@@ -9,82 +9,88 @@ import { light } from "../../themes/light";
 import Header from "@/src/components/Header";
 import { BottomTabHeaderProps } from "@react-navigation/bottom-tabs";
 import { Feather } from "@expo/vector-icons";
+import PeopleProvider from "@/src/providers/People";
 
 export default function Layout() {
   const theme = useColorScheme() === "light" ? light : dark;
   return (
     <>
-      <ExpoStatusBar backgroundColor={theme.bg} />
-      <ThemeProvider>
-        <Tabs
-          screenOptions={{
-            tabBarActiveTintColor: theme.bg,
-            tabBarLabelStyle: {
-              display: "none",
-            },
-            tabBarStyle: {
-              backgroundColor: theme.secondBg,
-              borderWidth: 0,
-              height: 50,
-            },
-          }}
-        >
-          <Tabs.Screen
-            name="index"
-            options={{
-              title: "Usuários",
-              header: (props: BottomTabHeaderProps) => (
-                <Header props={props} title="Usuários" />
-              ),
-              tabBarIcon: ({ color, focused, size }) => {
-                return (
-                  <Feather
-                    color={color}
-                    name="users"
-                    size={size * 1.25}
-                    style={
-                      focused && {
-                        padding: 10,
-                        backgroundColor: theme.text,
-                        borderRadius: 100,
-
-                        position: "absolute",
-                        bottom: 10,
-                      }
-                    }
-                  />
-                );
+      <ExpoStatusBar
+        backgroundColor={theme.bg}
+        style={useColorScheme() === "light" ? "dark" : "light"}
+      />
+      <PeopleProvider>
+        <ThemeProvider>
+          <Tabs
+            screenOptions={{
+              tabBarActiveTintColor: theme.bg,
+              tabBarLabelStyle: {
+                display: "none",
+              },
+              tabBarStyle: {
+                backgroundColor: theme.secondBg,
+                borderWidth: 0,
+                height: 50,
               },
             }}
-          />
-          <Tabs.Screen
-            name="user"
-            options={{
-              title: "Criar Usuário",
-              headerShown: false,
-              tabBarIcon: ({ color, focused, size }) => {
-                return (
-                  <Feather
-                    color={color}
-                    name="user-plus"
-                    size={size * 1.25}
-                    style={
-                      focused && {
-                        padding: 10,
-                        backgroundColor: theme.text,
-                        borderRadius: 100,
+          >
+            <Tabs.Screen
+              name="index"
+              options={{
+                title: "Usuários",
+                header: (props: BottomTabHeaderProps) => (
+                  <Header props={props} title="Usuários" />
+                ),
+                tabBarIcon: ({ color, focused, size }) => {
+                  return (
+                    <Feather
+                      color={color}
+                      name="users"
+                      size={size * 1.25}
+                      style={
+                        focused && {
+                          padding: 10,
+                          backgroundColor: theme.text,
+                          borderRadius: 100,
 
-                        position: "absolute",
-                        bottom: 10,
+                          position: "absolute",
+                          bottom: 10,
+                        }
                       }
-                    }
-                  />
-                );
-              },
-            }}
-          />
-        </Tabs>
-      </ThemeProvider>
+                    />
+                  );
+                },
+              }}
+            />
+            <Tabs.Screen
+              name="user"
+              options={{
+                title: "Criar Usuário",
+                headerShown: false,
+                tabBarIcon: ({ color, focused, size }) => {
+                  return (
+                    <Feather
+                      color={color}
+                      name="user-plus"
+                      size={size * 1.25}
+                      style={
+                        focused && {
+                          padding: 10,
+                          backgroundColor: theme.text,
+                          borderRadius: 100,
+
+                          position: "absolute",
+                          bottom: 10,
+                        }
+                      }
+                    />
+                  );
+                },
+              }}
+            />
+          </Tabs>
+        </ThemeProvider>
+      </PeopleProvider>
     </>
   );
 }
