@@ -3,16 +3,11 @@ import { useThemeContext } from "@/src/hooks/useThemeContext";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
 import { Link, useRouter } from "expo-router";
+import { formatDate } from "@/src/utils/formatDate";
 
 export default function CardPerson({ name, CPF, birthday, id }: PersonType) {
   const { theme } = useThemeContext();
   const router = useRouter();
-
-  const formatNum = (n: number) => (n < 10 ? "0" + n : n);
-  const formatDate = (date: Date) =>
-    `${formatNum(date.getDate())}/${formatNum(
-      date.getMonth() + 1
-    )}/${date.getFullYear()}`;
 
   return (
     <TouchableOpacity style={[styles.cardContainer, { backgroundColor: theme.secondBg }]} onLongPress={() => {router.push(`user/${id}`)}}>

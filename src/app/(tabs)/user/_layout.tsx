@@ -1,10 +1,8 @@
 import Header from "@/src/components/Header";
-import { useThemeContext } from "@/src/hooks/useThemeContext";
 import { NativeStackHeaderProps } from "@react-navigation/native-stack";
 import { Stack } from "expo-router";
 
 export default function Layout() {
-  const { theme } = useThemeContext();
   return (
     <Stack
     // tabBar={(props: BottomTabBarProps) => <TabBar props={props}/>}
