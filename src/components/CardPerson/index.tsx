@@ -1,33 +1,63 @@
 import { PersonType } from "@/src/@types/person";
 import { useThemeContext } from "@/src/hooks/useThemeContext";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
-export default function Card({ name, CPF, birthDay, key }: PersonType) {
+import { Link, useRouter } from "expo-router";
+
+export default function CardPerson({ name, CPF, birthDay, id }: PersonType) {
   const { theme } = useThemeContext();
+  const router = useRouter();
 
-  const formatNum = (n: number) => n < 10? '0'+n : n
-  const formatDate = (date: Date) => `${formatNum(date.getDate())}/${formatNum(date.getMonth()+1)}/${date.getFullYear()}`
+  const formatNum = (n: number) => (n < 10 ? "0" + n : n);
+  const formatDate = (date: Date) =>
+    `${formatNum(date.getDate())}/${formatNum(
+      date.getMonth() + 1
+    )}/${date.getFullYear()}`;
 
   return (
-    <View style={[styles.cardContainer, { backgroundColor: theme.secondBg }]}>
+    <TouchableOpacity style={[styles.cardContainer, { backgroundColor: theme.secondBg }]} onLongPress={() => {router.push(`user/${id}`)}}>
       <Text style={[styles.name, { color: theme.boxColor }]}>{name}</Text>
       <View style={styles.row}>
-        <Text style={[styles.data, { color: theme.text, borderBottomWidth: 1, borderBottomColor: theme.boxColor }]}>CPF</Text>
+        <Text
+          style={[
+            styles.data,
+            {
+              color: theme.text,
+              borderBottomWidth: 1,
+              borderBottomColor: theme.boxColor,
+            },
+          ]}
+        >
+          CPF
+        </Text>
         <Text style={[styles.data, { color: theme.text }]}>{CPF}</Text>
       </View>
       <View style={styles.row}>
-        <Text style={[styles.data, { color: theme.text, borderBottomWidth: 1, borderBottomColor: theme.boxColor }]}>Aniversário</Text>
-        <Text style={[styles.data, { color: theme.text }]}>{formatDate(birthDay)}</Text>
+        <Text
+          style={[
+            styles.data,
+            {
+              color: theme.text,
+              borderBottomWidth: 1,
+              borderBottomColor: theme.boxColor,
+            },
+          ]}
+        >
+          Aniversário
+        </Text>
+        <Text style={[styles.data, { color: theme.text }]}>
+          {formatDate(birthDay)}
+        </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   cardContainer: {
-    marginVertical: "1%",
-    marginHorizontal: "7.5%",
-    width: "85%",
+    marginVertical: "2.5%",
+    marginHorizontal: "auto",
+    width: "90%",
     paddingVertical: "2.5%",
     paddingHorizontal: "5%",
     borderRadius: 10,

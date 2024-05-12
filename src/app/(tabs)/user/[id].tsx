@@ -1,11 +1,13 @@
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useThemeContext } from '@/src/hooks/useThemeContext';
+import { useLocalSearchParams } from 'expo-router';
 
 export default function edit() {
  const { theme } = useThemeContext()
+ const { id } = useLocalSearchParams()
  return (
    <View style={[styles.container, {backgroundColor: theme.bg}]}>
-        <Text>Edit</Text>
+        <Text>Edit {id}</Text>
    </View>
   );
 }

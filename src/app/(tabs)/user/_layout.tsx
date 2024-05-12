@@ -2,7 +2,6 @@ import Header from "@/src/components/Header";
 import { useThemeContext } from "@/src/hooks/useThemeContext";
 import { NativeStackHeaderProps } from "@react-navigation/native-stack";
 import { Stack } from "expo-router";
-import ExpoStatusBar from "expo-status-bar/build/ExpoStatusBar";
 
 export default function Layout() {
   const { theme } = useThemeContext();
@@ -20,7 +19,7 @@ export default function Layout() {
         }}
       />
       <Stack.Screen
-        name="edit"
+        name="[id]"
         options={{
           title: "Editar Usuário",
           header: (props: NativeStackHeaderProps) => (
