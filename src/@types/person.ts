@@ -1,6 +1,6 @@
 export type PersonType = {
     name: string,
-    birthDay: Date,
+    birthday: Date,
     CPF: string,
     id: string
 }

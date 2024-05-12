@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
 import { Link, useRouter } from "expo-router";
 
-export default function CardPerson({ name, CPF, birthDay, id }: PersonType) {
+export default function CardPerson({ name, CPF, birthday, id }: PersonType) {
   const { theme } = useThemeContext();
   const router = useRouter();
 
@@ -46,7 +46,7 @@ export default function CardPerson({ name, CPF, birthDay, id }: PersonType) {
           Aniversário
         </Text>
         <Text style={[styles.data, { color: theme.text }]}>
-          {formatDate(birthDay)}
+          {formatDate(birthday)}
         </Text>
       </View>
     </TouchableOpacity>
