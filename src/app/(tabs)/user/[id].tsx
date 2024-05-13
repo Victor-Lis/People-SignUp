@@ -78,8 +78,11 @@ export default function edit() {
    }
  }
 
+ const handleGoBack = () => router.back()
+
  return (
    <View style={[styles.container, { backgroundColor: theme.bg }]}>
+     <Button style={{ backgroundColor: "red", position: "absolute", top: "1%", }} text="Voltar!" handleSubmit={handleGoBack}/> 
      <InputRow title="Nome" placeholder="Victor" value={name} setValue={setName}/>
      <InputRow title="CPF" placeholder="495864203-55" value={CPF} setValue={handleSetCPF}/>
      <InputRow title="Aniversário" placeholder="16/02/2007" value={date} setValue={handleSetDate}/>

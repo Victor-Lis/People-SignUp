@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   View,
   Text,
@@ -11,7 +12,10 @@ import Card from "../../components/CardPerson";
 
 export default function app() {
   const { theme } = useThemeContext();
-  const { people } = usePeopleContext();
+  const { people, loadAsyncData } = usePeopleContext();
+  useEffect(() => {
+    loadAsyncData()
+  }, [])
   return (
     <View style={[styles.container, { backgroundColor: theme.bg }]}>
       <FlatList

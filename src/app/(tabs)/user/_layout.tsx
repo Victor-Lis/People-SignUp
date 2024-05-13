@@ -10,18 +10,18 @@ export default function Layout() {
       <Stack.Screen
         name="create"
         options={{
-          title: "Criar Usuário",
+          title: "Cadastrar Pessoa",
           header: (props: NativeStackHeaderProps) => (
-            <Header props={props} title="Criar Usuário" />
+            <Header props={props} title="Cadastrar Pessoa" />
           ),
         }}
       />
       <Stack.Screen
         name="[id]"
         options={{
-          title: "Editar Usuário",
+          title: "Editar Pessoa",
           header: (props: NativeStackHeaderProps) => (
-            <Header props={props} title="Editar Usuário" />
+            <Header props={props} title="Editar Pessoa" />
           ),
         }}
       />

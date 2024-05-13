@@ -39,9 +39,9 @@ export default function Layout() {
             <Tabs.Screen
               name="index"
               options={{
-                title: "Usuários",
+                title: "Pessoas",
                 header: (props: BottomTabHeaderProps) => (
-                  <Header props={props} title="Usuários" />
+                  <Header props={props} title="Pessoas" />
                 ),
                 tabBarIcon: ({ color, focused, size }) => {
                   return (
@@ -67,7 +67,7 @@ export default function Layout() {
             <Tabs.Screen
               name="user"
               options={{
-                title: "Criar Usuário",
+                title: "Cadastrar Usuário",
                 headerShown: false,
                 tabBarIcon: ({ color, focused, size }) => {
                   return (
