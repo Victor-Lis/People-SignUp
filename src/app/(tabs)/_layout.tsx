@@ -1,4 +1,4 @@
-import ExpoStatusBar from "expo-status-bar/build/ExpoStatusBar";
+import { StatusBar } from "expo-status-bar";
 import { useColorScheme } from "react-native";
 import { Tabs } from "expo-router";
 
@@ -12,12 +12,14 @@ import { Feather } from "@expo/vector-icons";
 import PeopleProvider from "@/src/providers/People";
 
 export default function Layout() {
-  const theme = useColorScheme() === "light" ? light : dark;
+  const userTheme = useColorScheme()
+  const theme = userTheme === "light" ? light : dark;
   return (
     <>
-      <ExpoStatusBar
-        backgroundColor={theme?.bg}
-        style={"auto"}
+      <StatusBar
+        backgroundColor={theme.bg}
+        style={userTheme === "dark" ? "light" : "dark"}
+        // style={userTheme === "light" ? "dark" : "light"}
       />
       <PeopleProvider>
         <ThemeProvider>
