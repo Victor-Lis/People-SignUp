@@ -4,13 +4,18 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
 import { Link, useRouter } from "expo-router";
 import { formatDate } from "@/src/utils/formatDate";
+import { usePeopleContext } from "@/src/hooks/usePeopleContext";
 
 export default function CardPerson({ name, CPF, birthday, id }: PersonType) {
   const { theme } = useThemeContext();
+  const { removePerson } = usePeopleContext()
   const router = useRouter();
-
   return (
-    <TouchableOpacity style={[styles.cardContainer, { backgroundColor: theme.secondBg }]} onLongPress={() => {router.push(`user/${id}`)}}>
+    <TouchableOpacity 
+      style={[styles.cardContainer, { backgroundColor: theme.secondBg }]} 
+      onPress={() => router.push(`user/${id}`)} 
+      onLongPress={() => removePerson({id})}
+    >
       <Text style={[styles.name, { color: theme.boxColor }]}>{name}</Text>
       <View style={styles.row}>
         <Text
