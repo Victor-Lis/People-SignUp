@@ -64,7 +64,6 @@ export default function PeopleProvider({ children }: { children: ReactNode }) {
       console.error("Error saving data to AsyncStorage:", error);
     }
   };
-  
   return (
     <PeopleContext.Provider
       value={{ people, pushPerson, updatePerson, removePerson, loadAsyncData }}
