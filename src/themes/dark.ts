@@ -5,4 +5,6 @@ export const dark: ThemeType = {
     secondBg: "#2f2f2f",
     text: "#fff",
     boxColor: "rgb(40, 107, 255)",
+    placeholder: "rgb(200,200,200)",
+    buttonText: "#fff"
 }
