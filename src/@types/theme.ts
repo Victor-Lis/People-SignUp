@@ -3,4 +3,6 @@ export type ThemeType = {
     secondBg: string,
     text: string,
     boxColor: string,
+    placeholder: string,
+    buttonText: string
 }
