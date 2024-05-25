@@ -6,7 +6,7 @@ import { Link, useRouter } from "expo-router";
 import { formatDate } from "@/src/utils/formatDate";
 import { usePeopleContext } from "@/src/hooks/usePeopleContext";
 
-export default function CardPerson({ name, CPF, birthday, id }: PersonType) {
+export default function CardPerson({ name, CPF, birthday, id, rua, cidade, estado, CEP }: PersonType) {
   const { theme } = useThemeContext();
   const { removePerson } = usePeopleContext()
   const router = useRouter();
@@ -49,6 +49,58 @@ export default function CardPerson({ name, CPF, birthday, id }: PersonType) {
           {formatDate(birthday)}
         </Text>
       </View>
+      <Text style={[styles.subTitle, { color: theme.boxColor }]}>{CEP}</Text>
+      <View style={styles.row}>
+        <Text
+          style={[
+            styles.data,
+            {
+              color: theme.text,
+              borderBottomWidth: 1,
+              borderBottomColor: theme.boxColor,
+            },
+          ]}
+        >
+          Rua
+        </Text>
+        <Text style={[styles.data, { color: theme.text }]}>
+          {rua}
+        </Text>
+      </View>
+      <View style={styles.row}>
+        <Text
+          style={[
+            styles.data,
+            {
+              color: theme.text,
+              borderBottomWidth: 1,
+              borderBottomColor: theme.boxColor,
+            },
+          ]}
+        >
+          Cidade
+        </Text>
+        <Text style={[styles.data, { color: theme.text }]}>
+          {cidade}
+        </Text>
+      </View>
+      <View style={styles.row}>
+        <Text
+          style={[
+            styles.data,
+            {
+              color: theme.text,
+              borderBottomWidth: 1,
+              borderBottomColor: theme.boxColor,
+            },
+          ]}
+        >
+          Estado
+        </Text>
+        <Text style={[styles.data, { color: theme.text }]}>
+          {estado}
+        </Text>
+      </View>
     </TouchableOpacity>
   );
 }
@@ -79,4 +131,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginVertical: "1.5%",
   },
+  subTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginTop: "5%",
+    marginBottom: ".5%",
+  }
 });

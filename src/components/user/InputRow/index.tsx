@@ -5,14 +5,15 @@ type InputRowProps = {
   title: string,
   value: string,
   placeholder: string,
-  setValue: (e: string) => void | React.Dispatch<React.SetStateAction<string>>
+  editable?: boolean,
+  setValue?: ((e: string) => void) | ((e: string) => Promise<void>) | React.Dispatch<React.SetStateAction<string>>;
 }
-export default function InputRow({title, value, placeholder, setValue}: InputRowProps) {
+export default function InputRow({title, value, placeholder, editable, setValue}: InputRowProps) {
  const { theme } = useThemeContext()
  return (
    <View style={[styles.row]}>
     <Text style={[styles.title, {color: theme.boxColor, borderColor: theme.boxColor}]}>{title}</Text>
-    <TextInput placeholder={placeholder} placeholderTextColor={theme.bg} style={[styles.input, {backgroundColor: theme.secondBg, color: theme.text, borderColor: theme.text}]} value={value} onChangeText={(e) => setValue(e)}/>
+    <TextInput editable={editable} placeholder={placeholder} placeholderTextColor={theme.placeholder} style={[styles.input, {backgroundColor: theme.secondBg, color: theme.text, borderColor: theme.text}]} value={value} onChangeText={(e) => setValue? setValue(e) : {}}/>
    </View>
   );
 }

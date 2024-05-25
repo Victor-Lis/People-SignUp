@@ -15,7 +15,7 @@ export default function Button({text, handleSubmit, style, textStyle}: ButtonPro
       style={[styles.button, { backgroundColor: theme.boxColor }, style]}
       onPress={handleSubmit}
     >
-      <Text style={[{ color: theme.text }, textStyle]}>{text}</Text>
+      <Text style={[{ color: theme.buttonText }, textStyle]}>{text}</Text>
     </TouchableOpacity>
   );
 }

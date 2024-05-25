@@ -16,20 +16,20 @@ export const PeopleContext = createContext({} as PersonContext);
 export default function PeopleProvider({ children }: { children: ReactNode }) {
   const [people, setPeople] = useState<PersonType[]>([]);
 
-  const pushPerson = ({ name, CPF, birthday }: Omit<PersonType, "id">) => {
+  const pushPerson = (person: Omit<PersonType, "id">) => {
     let id = `${Math.random()}`;
-    setPeople((oldPeople) => [...oldPeople, { name, CPF, birthday, id }]);
-    saveAsyncData([...people, { name, CPF, birthday, id }]);
+    setPeople((oldPeople) => [...oldPeople, {...person, id}]);
+    saveAsyncData([...people, {...person, id}]);
   };
 
-  const updatePerson = ({ id, name, CPF, birthday }: PersonType) => {
+  const updatePerson = (person: PersonType) => {
     setPeople((oldPeople) => [
-      ...oldPeople.filter((person) => person.id !== id),
-      { name, CPF, birthday, id },
+      ...oldPeople.filter((p) => p.id !== person.id),
+      person,
     ]);
     saveAsyncData([
-      ...people.filter((person) => person.id !== id),
-      { name, CPF, birthday, id },
+      ...people.filter((p) => p.id !== person.id),
+      person,
     ]);
   };
 
